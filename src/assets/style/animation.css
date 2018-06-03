@@ -1,0 +1,58 @@
+@keyframes pop-slide-bottom-enter {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes pop-slide-bottom-leave {
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes pop-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pop-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pop-fade {
+  &-enter-active {
+    animation: .3s pop-fade-in;
+  }
+
+  &-leave-active {
+    animation: .3s pop-fade-out;
+  }
+}
+
+.pop-slide-bottom {
+  &-enter-active {
+    animation: pop-slide-bottom-enter .3s both ease;
+  }
+
+  &-leave-active {
+    animation: pop-slide-bottom-leave .3s both ease;
+  }
+}
