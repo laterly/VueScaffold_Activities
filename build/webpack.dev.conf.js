@@ -9,6 +9,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const AutoDllPlugin = require('autodll-webpack-plugin')
+const pkg = require('../package.json')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -81,6 +83,18 @@ module.exports = new Promise((resolve, reject) => {
       process.env.PORT = port
       // add port to devServer config
       devWebpackConfig.devServer.port = port
+
+      if (pkg.useAutoDll) {
+        devWebpackConfig.plugins.push(new AutoDllPlugin({
+          inject: true,
+          debug: true,
+          filename: '[name]_[hash].js',
+          context: path.resolve(__dirname, '..'),
+          entry: {
+            vendor: Object.keys(pkg.dependencies)
+          }
+        }))
+      }
 
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({

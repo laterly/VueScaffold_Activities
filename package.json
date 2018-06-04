@@ -14,7 +14,9 @@
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   },
+  "useAutoDll": true,
   "devDependencies": {
+    "autodll-webpack-plugin": "^0.4.2",
     "autoprefixer": "^8.3.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.1",

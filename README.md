@@ -1,8 +1,12 @@
 # festival_scaffold
 
-> 针对用Vue写活动页面的脚手架，采用最新的webpack4 + vue-loader15
+> 针对用Vue写活动页面的脚手架，采用最新的webpack4 + vue-loader15, 后面会尝试引入一些动画库，目前引入了高可定制的弹窗组件和自动打包插件
 
-后面会尝试引入一些动画库和DLL分离打包插件，目前引入了高可定制的弹窗组件
+DLL分离打包插件已添加，用于提升开发过程中的打包速度：
+
+- 使用[API](https://github.com/asfktz/autodll-webpack-plugin) `package.json`中的`useAutoDll`选择是否启用这个特性
+- 本质是利用DLL打包来实现，自动把`package.json`中的`dependencies`打包成`vendor`并自动引入
+- 经过测试，未使用此特性前在开发环境`app.js`打包大小为`535kb`, 启用后为`491KB`, 如果引入资源多的话，优化会更明显，打包时间缩短
 
 ## 基本用法
 
@@ -25,6 +29,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - add precss to write BEM instead of sass
 - add device-width calc(375) for moblie use
 - add fesdialog for festival use
+- add autodll-webpack-plugin support for dependencies cache
 
 ## fesdialog components readme:
 
