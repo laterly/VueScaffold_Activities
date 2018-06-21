@@ -30,6 +30,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - add device-width calc(375) for moblie use
 - add fesdialog for festival use
 - add autodll-webpack-plugin support for dependencies cache
+- add vue-loading for image cache show
 
 ## fesdialog components readme:
 
@@ -37,7 +38,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 `popup`默认从中间弹出
 
 ```html
-<van-popup v-model="show">内容</van-popup>
+<fesDialog v-model="show">内容</fesDialog>
 ```
 
 ```javascript
@@ -54,9 +55,9 @@ export default {
 通过`position`属性设置 Popup 弹出位置
 
 ```html
-<van-popup v-model="show" position="top" :overlay="false">
+<fesDialog v-model="show" position="top" :overlay="false">
   内容
-</van-popup>
+</fesDialog>
 ```
 
 ### API
@@ -78,6 +79,18 @@ export default {
 | 事件名 | 说明 | 参数 |
 |-----------|-----------|-----------|
 | click-overlay | 点击蒙层时触发 | - |
+
+## vue-loading文档说明：
+
+详见：https://github.com/jkchao/vue-loading
+
+实际的活动页面开发中，图片资源是很重要的一个方面，一般开发过程中先不考虑图片的压缩和加载，在项目通过主要流程测试后，为了优化往往会压缩图片资源，并针对图片进行预加载，加载过程中显示`loading`图，然后资源加载完毕后展现活动页面。为了方便图片路径自动生成，我们约定图片资源都放在`src/assets/`下，利用代码在`src/components/optimize`下生成路径聚合文件`imagePath.js`并在`preImage.vue`组件中引入。
+
+用法：
+- 自动生成相对的图片路径：`npm run image`
+- 在页面中引入`preImage`组件，并监听其`imgLoaded`方法，对`vue-loading`做展现控制操作
+- 具体可参照`App.vue`中的逻辑写法
+- 如果对`loading`展现需要定制，可修改`loadingMask.vue`文件进行订制开发
 
 
 欢迎`star`&&`fork`, 如果在使用过程中有问题或者需要进一步探讨，欢迎加我微信`kashao3824`(备注`github`)或者开`issue`。
