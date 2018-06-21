@@ -5,8 +5,12 @@
   </div>
 </template>
 <script>
+import { VueLoading } from 'vue-loading-template'
 export default {
-  name: 'loadingMask'
+  name: 'loadingMask',
+  components: {
+    VueLoading
+  }
 }
 </script>
 
@@ -14,14 +18,14 @@ export default {
   .loadingWrapper {
     height: 100%;
     width: 100%;
-    background-color: #ffffff;
     h2 {
       text-align: center;
       width: 100%;
-      margin-top: 200px;
-      margin-bottom: 20px;
+      padding-top: 200px;
+      padding-bottom: 20px;
       font-size: 18px;
       color: #333;
+      margin: 0;
     }
   }
 </style>

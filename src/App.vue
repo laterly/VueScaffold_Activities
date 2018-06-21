@@ -29,5 +29,8 @@ export default {
 </script>
 
 <style>
-
+  #app {
+    background-color: bisque;
+    height: 100%;
+  }
 </style>
