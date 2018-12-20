@@ -24,6 +24,9 @@ export default {
       }
       img.src = item.getAttribute('src')
     })
+    if (this.PRE_IMAGESET.length === 0) {
+      this.$emit('imgLoaded')
+    }
   },
   watch: {
     count(val, oldVal) {

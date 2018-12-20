@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1 @click="dialogFunc" class="fes--center">{{ title }}</h1>
-    <h2 class="fes--center">click title to open dialog</h2>
+    <h2 class="fes--center" @click="showGlobal">click to open global dialog</h2>
     <fesDialog v-model="isShow" :close-on-click-overlay="false">
       <div class="fes-dialog">
         <span>{{msg}}</span>
@@ -29,6 +29,9 @@ export default {
   methods: {
     dialogFunc() {
       this.isShow = !this.isShow
+    },
+    showGlobal() {
+      this.$showGlobal(+new Date() + 200000, '知道了')
     }
   }
 }
